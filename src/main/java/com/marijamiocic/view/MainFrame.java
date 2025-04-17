@@ -28,9 +28,9 @@ public class MainFrame extends JFrame {
 
         loginFrame = new LoginFrame();
 
-        initComps();
-        layoutComps();
-        activateMainFrame();
+//        initComps();
+//        layoutComps();
+//        activateMainFrame();
 
         activateLoginListener();
     }
@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
                 initComps();
                 layoutComps();
                 setVisible(true);
-                activateMainFrame();
+                activateComps();
                 loginFrame.dispose();
             }
         });
@@ -53,19 +53,19 @@ public class MainFrame extends JFrame {
     private void initComps() {
         menuBar = new MenuBar();
         title = new JLabel("Quiz");
-        title.setFont(new Font("SansSerif", Font.BOLD, 50));
+        title.setFont(new Font("SansSerif", Font.BOLD, 70));
         logo = new JLabel();
         logo.setIcon(new ImageIcon("src/main/resources/logo.png"));
     }
 
     private void layoutComps() {
-        setLayout(new MigLayout("insets 0 180, center", "", "[][]"));
+        setLayout(new MigLayout("wrap 1", "", "[][]"));
         add(menuBar, "w 800, h 50, wrap");
-        add(logo, "split 2, center, span");
-        add(title, "center, wrap");
+        add(logo, "gaptop 150, split 2, center, span");
+        add(title, "gaptop 150, center, wrap");
     }
 
-    private void activateMainFrame() {
+    private void activateComps() {
 
     }
 }

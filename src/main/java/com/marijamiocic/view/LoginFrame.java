@@ -85,14 +85,21 @@ public class LoginFrame extends JFrame {
                 String password = new String(passwordField.getPassword());
 
                 if (username.equals("")) {
-                    JOptionPane.showMessageDialog(LoginFrame.this, "Please enter a username!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(LoginFrame.this, "Please enter your username!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
                 if (password.equals("")) {
-                    JOptionPane.showMessageDialog(LoginFrame.this, "Please enter a password!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(LoginFrame.this, "Please enter your password!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+            }
+        });
+
+        register.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new RegisterFrame();
             }
         });
     }
