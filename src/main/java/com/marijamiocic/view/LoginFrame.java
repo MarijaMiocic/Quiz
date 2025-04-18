@@ -1,5 +1,8 @@
 package com.marijamiocic.view;
 
+import com.marijamiocic.controller.UserRepository;
+import com.marijamiocic.model.User;
+import com.marijamiocic.util.HashUtil;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -84,14 +87,27 @@ public class LoginFrame extends JFrame {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                if (username.equals("")) {
+                if (username.isEmpty()) {
                     JOptionPane.showMessageDialog(LoginFrame.this, "Please enter your username!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
-                if (password.equals("")) {
+                if (password.isEmpty()) {
                     JOptionPane.showMessageDialog(LoginFrame.this, "Please enter your password!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
+                }
+
+                User user = UserRepository.getUserByUsername(username);
+
+                if (user == null || !HashUtil.checkPassword(password, user.getPassword())) {
+                    JOptionPane.showMessageDialog(LoginFrame.this, "Incorrect username or password!\nPlease register first!", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    if (username.equals("admin") && password.equals("admin")) {
+                        dispose();
+                        new AdminFrame().setAlwaysOnTop(true);
+                    } else {
+                        dispose();
+                    }
                 }
             }
         });

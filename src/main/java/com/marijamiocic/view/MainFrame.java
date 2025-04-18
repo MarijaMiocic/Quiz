@@ -28,9 +28,9 @@ public class MainFrame extends JFrame {
 
         loginFrame = new LoginFrame();
 
-//        initComps();
-//        layoutComps();
-//        activateMainFrame();
+        initComps();
+        layoutComps();
+        activateComps();
 
         activateLoginListener();
     }
@@ -40,10 +40,10 @@ public class MainFrame extends JFrame {
             @Override
             public void loginEventOccurred(LoginEvent loginEvent) {
                 user = loginEvent.getUser();
-                initComps();
-                layoutComps();
+//                initComps();
+//                layoutComps();
                 setVisible(true);
-                activateComps();
+//                activateComps();
                 loginFrame.dispose();
             }
         });

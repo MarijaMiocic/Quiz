@@ -36,4 +36,25 @@ public class UserRepository {
             return false;
         }
     }
+
+    public static User getUserByUsername(String username) {
+        String sql = "SELECT * FROM Users WHERE username = ?";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                boolean isAdmin = rs.getBoolean("isAdmin");
+                boolean isActive = rs.getBoolean("isActive");
+
+                return new User(email, username, password, isAdmin, isActive);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

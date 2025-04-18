@@ -20,4 +20,8 @@ public class HashUtil {
             throw new RuntimeException("Error hashing password", e);
         }
     }
+
+    public static boolean checkPassword(String plainPassword, String hashedPassword) {
+        return hashPassword(plainPassword).equals(hashedPassword);
+    }
 }
