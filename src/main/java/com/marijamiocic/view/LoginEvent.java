@@ -4,6 +4,9 @@ import com.marijamiocic.model.User;
 
 import java.util.EventObject;
 
+/**
+ * Represents a login event triggered by user interaction.
+ */
 public class LoginEvent extends EventObject {
 
     private User user;

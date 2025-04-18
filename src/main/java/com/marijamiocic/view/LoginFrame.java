@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Graphical user interface for user login.
+ */
 public class LoginFrame extends JFrame {
 
     private JLabel logo;
@@ -61,7 +64,7 @@ public class LoginFrame extends JFrame {
     }
 
     /**
-     * Configures the layout of the components in the login frame.
+     * Configures the layout of the components in the login frame using MigLayout.
      * Adds labels and text fields to the layout.
      */
     private void layoutComps() {

@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Registration form for new users.
+ */
 public class RegisterFrame extends JFrame {
 
     private JTextField emailField;
@@ -16,6 +19,9 @@ public class RegisterFrame extends JFrame {
     private JPasswordField passwordField;
     private JButton registerButton;
 
+    /**
+     * Constructor for the register frame.
+     */
     public RegisterFrame() {
         super("Register");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -29,6 +35,9 @@ public class RegisterFrame extends JFrame {
         activateComps();
     }
 
+    /**
+     * Initializes the components for the register frame.
+     */
     private void initComps() {
         emailField = new JTextField(20);
         usernameField = new JTextField(20);
@@ -36,6 +45,10 @@ public class RegisterFrame extends JFrame {
         registerButton = new JButton("Register");
     }
 
+    /**
+     * Configures the layout of the components in the register frame using MigLayout.
+     * Adds labels and text fields to the layout.
+     */
     private void layoutComps() {
         setLayout(new MigLayout("insets 70 50 50 50, center", "[right][grow]", "[][][][]"));
         add(new JLabel("Email:"));
@@ -47,6 +60,9 @@ public class RegisterFrame extends JFrame {
         add(registerButton, "gaptop 10, span 2, center");
     }
 
+    /**
+     * Adds logic to the register button for saving the new user.
+     */
     private void activateComps() {
         registerButton.addActionListener(new ActionListener() {
             @Override

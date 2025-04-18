@@ -4,10 +4,18 @@ import com.marijamiocic.model.User;
 
 import java.sql.*;
 
+/**
+ * Handles database operations related to the User entity.
+ */
 public class UserRepository {
 
     private static final String DB_URL = "jdbc:sqlite:quiz_database";
 
+    /**
+     * Saves a new user to the database if the email or username doesn't already exist.
+     * @param user The user to be saved.
+     * @return true if user was successfully saved, false otherwise.
+     */
     public static boolean saveUser(User user) {
         String checkSql = "SELECT id FROM Users WHERE email = ? OR username = ?";
         String insertSql = "INSERT INTO Users (email, username, password, isAdmin, isActive) VALUES (?, ?, ?, ?, ?)";
@@ -37,6 +45,11 @@ public class UserRepository {
         }
     }
 
+    /**
+     * Retrieves a user from the database based on the provided username.
+     * @param username The username of the user.
+     * @return A User object if found, otherwise null.
+     */
     public static User getUserByUsername(String username) {
         String sql = "SELECT * FROM Users WHERE username = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL);

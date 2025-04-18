@@ -2,6 +2,9 @@ package com.marijamiocic.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Represents a user of the application.
+ */
 @Entity
 @Table(name = "Users")
 public class User {
@@ -26,6 +29,14 @@ public class User {
     @Column(name = "isActive", nullable = false)
     private boolean isActive;
 
+    /**
+     * Constructs a new User with the specified details.
+     * @param email User's email address.
+     * @param username User's username.
+     * @param password User's hashed password.
+     * @param isAdmin Indicates if the user has admin privileges.
+     * @param isActive Indicates if the user account is active.
+     */
     public User(String email, String username, String password, boolean isAdmin, boolean isActive) {
         this.email = email;
         this.username = username;
@@ -34,6 +45,9 @@ public class User {
         this.isActive = isActive;
     }
 
+    /**
+     * Default constructor for frameworks and serialization.
+     */
     public User() {
 
     }

@@ -6,6 +6,10 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Main application window shown after successful login.
+ * Handles GUI display and user session.
+ */
 public class MainFrame extends JFrame {
 
     private LoginFrame loginFrame;
@@ -15,7 +19,9 @@ public class MainFrame extends JFrame {
     private JLabel logo;
     private JLabel title;
 
-
+    /**
+     * Constructor for the main frame.
+     */
     public MainFrame() {
         super("Quiz");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -35,6 +41,9 @@ public class MainFrame extends JFrame {
         activateLoginListener();
     }
 
+    /**
+     * Activates the login listener that listens for login success events.
+     */
     private void activateLoginListener() {
         loginFrame.setLoginListener(new LoginListener() {
             @Override
@@ -50,6 +59,9 @@ public class MainFrame extends JFrame {
         loginFrame.activateComps();
     }
 
+    /**
+     * Initializes the components for the main frame.
+     */
     private void initComps() {
         menuBar = new MenuBar();
         title = new JLabel("Quiz");
@@ -58,6 +70,10 @@ public class MainFrame extends JFrame {
         logo.setIcon(new ImageIcon("src/main/resources/logo.png"));
     }
 
+    /**
+     * Configures the layout of the components in the main frame using MigLayout.
+     * Adds labels and text fields to the layout.
+     */
     private void layoutComps() {
         setLayout(new MigLayout("wrap 1", "", "[][]"));
         add(menuBar, "w 800, h 50, wrap");
@@ -65,6 +81,10 @@ public class MainFrame extends JFrame {
         add(title, "gaptop 150, center, wrap");
     }
 
+    /**
+     * Activates the components by adding action listeners.
+     * Defines the behavior of the components when clicked.
+     */
     private void activateComps() {
 
     }
