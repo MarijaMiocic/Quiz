@@ -37,14 +37,14 @@ public class RegisterFrame extends JFrame {
     }
 
     private void layoutComps() {
-        setLayout(new MigLayout("wrap 2", "[right][grow]"));
+        setLayout(new MigLayout("insets 70 50 50 50, center", "[right][grow]", "[][][][]"));
         add(new JLabel("Email:"));
-        add(emailField);
+        add(emailField, "wrap");
         add(new JLabel("Username:"));
-        add(usernameField);
+        add(usernameField, "wrap");
         add(new JLabel("Password:"));
-        add(passwordField);
-        add(registerButton, "span 2, center");
+        add(passwordField, "wrap");
+        add(registerButton, "gaptop 10, span 2, center");
     }
 
     private void activateComps() {
