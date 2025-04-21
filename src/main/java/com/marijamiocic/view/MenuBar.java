@@ -29,20 +29,15 @@ public class MenuBar extends JMenuBar implements ActionListener {
     }
 
     /**
-     * Initializes menu items and sets action commands.
+     * Initializes menu items.
      */
     private void initComps() {
         playMenu = new JMenu("Play");
         generalKnowledge = new JMenuItem("General Knowledge");
 
-        generalKnowledge.setActionCommand("generalKnowledge");
-
         settingsMenu = new JMenu("Settings");
         statistics = new JMenuItem("Statistics");
         about = new JMenuItem("About");
-
-        statistics.setActionCommand("statistics");
-        about.setActionCommand("about");
     }
 
     /**
@@ -58,31 +53,34 @@ public class MenuBar extends JMenuBar implements ActionListener {
     }
 
     /**
-     * Adds action listeners to menu items.
+     * Adds action listeners to menu items and sets action commands.
      */
     private void activateMenuBar() {
         generalKnowledge.addActionListener(this);
+        generalKnowledge.setActionCommand("General knowledge");
         statistics.addActionListener(this);
+        statistics.setActionCommand("Statistics");
         about.addActionListener(this);
+        about.setActionCommand("About");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == generalKnowledge) {
             if (menuBarListener != null) {
-
+                menuBarListener.menuBarEventOccurred(generalKnowledge.getActionCommand());
             }
         }
 
         if (e.getSource() == statistics) {
             if (menuBarListener != null) {
-
+                menuBarListener.menuBarEventOccurred(statistics.getActionCommand());
             }
         }
 
         if (e.getSource() == about) {
             if (menuBarListener != null) {
-
+                menuBarListener.menuBarEventOccurred(about.getActionCommand());
             }
         }
     }
