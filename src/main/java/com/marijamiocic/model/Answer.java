@@ -74,4 +74,15 @@ public class Answer {
     public void setActive(boolean active) {
         isActive = active;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", question=" + question +
+                ", answerText='" + answerText + '\'' +
+                ", isCorrect=" + isCorrect +
+                ", isActive=" + isActive +
+                '}';
+    }
 }

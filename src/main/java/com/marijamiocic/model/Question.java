@@ -88,4 +88,16 @@ public class Question {
     public void setActive(boolean active) {
         isActive = active;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", category=" + category +
+                ", orderNumber=" + orderNumber +
+                ", questionText='" + questionText + '\'' +
+                ", answerCategory=" + answerCategory +
+                ", isActive=" + isActive +
+                '}';
+    }
 }

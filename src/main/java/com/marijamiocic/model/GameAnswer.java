@@ -63,4 +63,14 @@ public class GameAnswer {
     public void setSelectedAnswer(boolean selectedAnswer) {
         this.selectedAnswer = selectedAnswer;
     }
+
+    @Override
+    public String toString() {
+        return "GameAnswer{" +
+                "id=" + id +
+                ", answer=" + answer +
+                ", gameQuestion=" + gameQuestion +
+                ", selectedAnswer=" + selectedAnswer +
+                '}';
+    }
 }

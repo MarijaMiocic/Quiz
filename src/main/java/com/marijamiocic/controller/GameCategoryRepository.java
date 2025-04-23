@@ -4,10 +4,20 @@ import com.marijamiocic.model.GameCategory;
 
 import java.sql.*;
 
+/**
+ * Provides database access methods for the GameCategory entity.
+ * Includes functionality for fetching category data based on ID.
+ */
 public class GameCategoryRepository {
 
     private static final String DB_URL = "jdbc:sqlite:quiz_database";
 
+    /**
+     * Retrieves a game category from the database by its ID.
+     *
+     * @param id the ID of the category
+     * @return a GameCategory object if found, otherwise null
+     */
     public static GameCategory findById(int id) {
         String sql = "SELECT * FROM GameCategories WHERE id = ?";
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:quiz_database");

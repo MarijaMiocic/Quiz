@@ -62,4 +62,14 @@ public class GameCategory {
     public void setActive(boolean active) {
         isActive = active;
     }
+
+    @Override
+    public String toString() {
+        return "GameCategory{" +
+                "id=" + id +
+                ", code=" + code +
+                ", name='" + name + '\'' +
+                ", isActive=" + isActive +
+                '}';
+    }
 }

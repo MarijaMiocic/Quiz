@@ -43,6 +43,9 @@ public class AdminFrame extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Initializes the components for the admin frame.
+     */
     private void initComps() {
         questionField = new JTextField(50);
         answerFields = new JTextField[4];
@@ -56,6 +59,10 @@ public class AdminFrame extends JFrame {
         saveButton = new JButton("Save Question");
     }
 
+    /**
+     * Configures the layout of the components in the admin frame using MigLayout.
+     * Adds labels, text fields and buttons to the layout.
+     */
     private void layoutComps() {
         setLayout(new MigLayout("wrap 2", "[right][grow]"));
 
@@ -74,6 +81,10 @@ public class AdminFrame extends JFrame {
         add(saveButton, "gaptop 20");
     }
 
+    /**
+     * Activates the components by adding action listeners to buttons.
+     * Defines the behavior of the buttons when clicked.
+     */
     private void activateComps() {
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -112,7 +123,7 @@ public class AdminFrame extends JFrame {
                 }
 
                 // Kategorija (pretpostavimo id=1) i tip odgovora (pretpostavimo id=1)
-                GameCategory category = GameCategoryRepository.findById(1); // trebaš imati metodu u repozitoriju
+                GameCategory category = GameCategoryRepository.findById(1);
                 if (category == null || category.getId() == null) {
                     JOptionPane.showMessageDialog(AdminFrame.this, "Category not found or has no ID!");
                     return;

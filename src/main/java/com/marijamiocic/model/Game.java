@@ -75,4 +75,15 @@ public class Game {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", user=" + user +
+                ", category=" + category +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                '}';
+    }
 }

@@ -61,4 +61,14 @@ public class AnswerCategory {
     public void setActive(boolean active) {
         isActive = active;
     }
+
+    @Override
+    public String toString() {
+        return "AnswerCategory{" +
+                "id=" + id +
+                ", code=" + code +
+                ", name='" + name + '\'' +
+                ", isActive=" + isActive +
+                '}';
+    }
 }
