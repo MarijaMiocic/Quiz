@@ -4,7 +4,10 @@ import com.marijamiocic.model.Answer;
 import com.marijamiocic.model.Question;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Handles database operations related to the Question entity.
@@ -93,4 +96,54 @@ public class QuestionRepository {
 
         return false;
     }
+
+    public static List<Question> getQuestionsWithAnswersForCategory(String categoryName) {
+        String sql = """
+        SELECT q.id AS qid, q.questionText, a.id AS aid, a.answerText, a.isCorrect
+        FROM Questions q
+        JOIN GameCategories gc ON q.categoryId = gc.id
+        JOIN Answers a ON q.id = a.questionId
+        WHERE gc.name = ? AND q.isActive = 1 AND a.isActive = 1
+        ORDER BY q.orderNumber, a.id
+    """;
+
+        Map<Integer, Question> questionMap = new LinkedHashMap<>();
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, categoryName);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int qid = rs.getInt("qid");
+
+                Question q = questionMap.get(qid);
+                if (q == null) {
+                    q = new Question();
+                    q.setId(qid);
+                    q.setQuestionText(rs.getString("questionText"));
+                    q.setAnswerCategory(null); // if needed
+                    q.setActive(true);
+                    questionMap.put(qid, q);
+                }
+
+                Answer a = new Answer();
+                a.setId(rs.getInt("aid"));
+                a.setAnswerText(rs.getString("answerText"));
+                a.setCorrect(rs.getBoolean("isCorrect"));
+
+                if (q.getAnswers() == null) {
+                    q.setAnswers(new ArrayList<>());
+                }
+                q.getAnswers().add(a);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return new ArrayList<>(questionMap.values());
+    }
+
 }

@@ -29,6 +29,14 @@ public class MenuBar extends JMenuBar implements ActionListener {
     }
 
     /**
+     * Setts menu bar listener.
+     * @param menuBarListener Listener for menu bar
+     */
+    public void setMenuBarListener(MenuBarListener menuBarListener) {
+        this.menuBarListener = menuBarListener;
+    }
+
+    /**
      * Initializes menu items.
      */
     private void initComps() {

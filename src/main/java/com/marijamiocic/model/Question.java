@@ -2,6 +2,8 @@ package com.marijamiocic.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 /**
  * Represents a quiz question.
  */
@@ -99,5 +101,15 @@ public class Question {
                 ", answerCategory=" + answerCategory +
                 ", isActive=" + isActive +
                 '}';
+    }
+
+    private List<Answer> answers;
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }

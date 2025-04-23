@@ -91,7 +91,14 @@ public class MainFrame extends JFrame {
      * Defines the behavior of the components when clicked.
      */
     private void activateComps() {
-
+        menuBar.setMenuBarListener(new MenuBarListener() {
+            @Override
+            public void menuBarEventOccurred(String command) {
+                if (command.equals("General knowledge")) {
+                    new PlayFrame().setAlwaysOnTop(true);
+                }
+            }
+        });
     }
 
     /**
