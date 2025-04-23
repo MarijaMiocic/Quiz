@@ -8,6 +8,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -40,7 +41,7 @@ public class PlayFrame extends JFrame {
         layoutComps();
         activateComps();
 
-        loadQuestions();
+        loadQuestions2();
         if (questions != null && !questions.isEmpty()) {
             showQuestion(currentQuestionIndex);
         }
@@ -108,6 +109,22 @@ public class PlayFrame extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
             dispose(); // Close the frame if no questions
         }
+    }
+
+    private void loadQuestions2() {
+        List<Question> allQuestions = QuestionRepository.getQuestionsWithAnswersForCategory("General Knowledge");
+
+        if (allQuestions == null || allQuestions.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "No questions found for this category.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            dispose();
+            return;
+        }
+
+        Collections.shuffle(allQuestions);
+        this.questions = allQuestions.subList(0, Math.min(4, allQuestions.size()));
     }
 
     /**
