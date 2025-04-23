@@ -109,6 +109,9 @@ public class LoginFrame extends JFrame {
                         dispose();
                         new AdminFrame().setAlwaysOnTop(true);
                     } else {
+                        if (loginListener != null) {
+                            loginListener.loginEventOccurred(new LoginEvent(this, user));
+                        }
                         dispose();
                     }
                 }

@@ -15,10 +15,12 @@ public class LoginEvent extends EventObject {
      * Constructs a prototypical Event.
      *
      * @param source the object on which the Event initially occurred
+     * @param user Logged user
      * @throws IllegalArgumentException if source is null
      */
-    public LoginEvent(Object source) {
+    public LoginEvent(Object source, User user) {
         super(source);
+        this.user = user;
     }
 
     public User getUser() {

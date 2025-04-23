@@ -49,6 +49,7 @@ public class MainFrame extends JFrame {
             @Override
             public void loginEventOccurred(LoginEvent loginEvent) {
                 user = loginEvent.getUser();
+                updateUserInfo();
 //                initComps();
 //                layoutComps();
                 setVisible(true);
@@ -68,6 +69,9 @@ public class MainFrame extends JFrame {
         title.setFont(new Font("SansSerif", Font.BOLD, 70));
         logo = new JLabel();
         logo.setIcon(new ImageIcon("src/main/resources/logo.png"));
+
+        userNameLabel = new JLabel("");
+        userNameLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
     }
 
     /**
@@ -77,6 +81,7 @@ public class MainFrame extends JFrame {
     private void layoutComps() {
         setLayout(new MigLayout("wrap 1", "", "[][]"));
         add(menuBar, "w 800, h 50, wrap");
+        add(userNameLabel, "align right, gapbottom 10, wrap");
         add(logo, "gaptop 150, split 2, center, span");
         add(title, "gaptop 150, center, wrap");
     }
@@ -87,5 +92,16 @@ public class MainFrame extends JFrame {
      */
     private void activateComps() {
 
+    }
+
+    /**
+     * Updates the username label with the currently logged-in user's username.
+     */
+    private void updateUserInfo() {
+        if (user != null) {
+            userNameLabel.setText("Hello " + user.getUsername() + "!");
+            userNameLabel.revalidate();
+            userNameLabel.repaint();
+        }
     }
 }
